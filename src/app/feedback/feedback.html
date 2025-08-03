@@ -1,0 +1,78 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <h2>Customer Feedback Form</h2>
+
+  <div>
+    <label>First Name:</label>
+    <input formControlName="firstName" />
+  </div>
+
+  <div>
+    <label>Last Name:</label>
+    <input formControlName="lastName" />
+  </div>
+
+  <div>
+    <label>Age:</label>
+    <input type="number" formControlName="age" min="18" max="80"/>
+  </div>
+
+  <div>
+    <label>Nationality:</label>
+    <input formControlName="nationality" />
+  </div>
+
+  <div>
+    <label>Gender:</label>
+    <select formControlName="gender">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input formControlName="email" />
+  </div>
+
+  <div>
+    <label>Mobile No:</label>
+    <input formControlName="mobileNo" />
+  </div>
+
+  <fieldset>
+    <legend>Address</legend>
+
+    <div>
+      <label>Door No:</label>
+      <input formControlName="doorNo" />
+    </div>
+
+    <div>
+      <label>Street:</label>
+      <input formControlName="street" />
+    </div>
+
+    <div>
+      <label>City:</label>
+      <input formControlName="city" />
+    </div>
+
+    <div>
+      <label>State:</label>
+      <input formControlName="state" />
+    </div>
+
+    <div>
+      <label>Country:</label>
+      <input formControlName="country" />
+    </div>
+  </fieldset>
+
+  <div>
+    <label>Message:</label>
+    <textarea formControlName="message"></textarea>
+  </div>
+
+  <button type="submit">Submit Feedback</button>
+</form>
