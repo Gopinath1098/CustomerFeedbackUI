@@ -1,59 +1,64 @@
-# CustomerFeedbackUI
+# 📝 Customer Feedback Management System – Angular UI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.4.
+This is the frontend application for the **Customer Feedback Management System**, built using **Angular**. It interacts with the Spring Boot backend to allow users to submit, view, and manage customer feedback.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Features
 
-```bash
+- Submit feedback with customer details and address
+- View feedback history
+- Form validation and error handling
+- Responsive UI with Angular Material (optional)
+- RESTful API integration with Spring Boot backend
+
+---
+
+## 🛠️ Tech Stack
+
+- **Angular** 15+
+- **TypeScript**
+- **RxJS**
+- **Bootstrap / Angular Material** (optional)
+- **REST API** (Spring Boot backend)
+
+---
+
+## 📦 Project Structure
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+
+bash
+git clone https://github.com/Gopinath1098/feedback-ui.git
+cd feedback-ui
+
+**2. Install Dependencies**
+
+npm install
+
+**3. Run the Application**
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+**🔗 Backend Integration**
 
-## Code scaffolding
+http://localhost:8080
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+// customer.service.ts
+private baseUrl = 'http://localhost:8080/api/customers';
 
-```bash
-ng generate component component-name
-```
+**📤 API Endpoints Used**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- POST /api/customers – Submit feedback
+- GET /api/customers – Get all feedback
 
-```bash
-ng generate --help
-```
 
-## Building
+📌 Notes
+- Ensure CORS is enabled on the backend.
+- Customize styles and layout as needed.
+- Add authentication if required for admin access.
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
