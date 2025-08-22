@@ -13,7 +13,7 @@ export class FeedbackSerive {
   constructor(private httpClient:HttpClient){}
 
   createCustomer(customer:Customer):Observable<Customer>{
-    return this.httpClient.post<Customer>(this.postApiUrl,customer)
+    return this.httpClient.post<Customer>(this.postApiUrl,customer);
   }
 
 }

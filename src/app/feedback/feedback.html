@@ -3,41 +3,60 @@
 
   <div>
     <label>First Name:</label>
-    <input formControlName="firstName" />
+    <input formControlName="firstName" placeholder="Enter your first name"/>
+    <div *ngIf="customerForm.get('firstName')?.invalid && customerForm.get('firstName')?.touched">
+    <small class="error">First Name is required.</small>
+  </div>
+
   </div>
 
   <div>
     <label>Last Name:</label>
-    <input formControlName="lastName" />
+    <input formControlName="lastName" placeholder="Enter your last name"/>
+     <div *ngIf="customerForm.get('lastName')?.invalid && customerForm.get('lastName')?.touched">
+    <small class="error">Last Name is required.</small>
+  </div>
   </div>
 
   <div>
     <label>Age:</label>
-    <input type="number" formControlName="age" min="18" max="80"/>
+    <input type="number" formControlName="age" min="18" max="80" placeholder="Age should be 18-80"/>
   </div>
 
   <div>
     <label>Nationality:</label>
-    <input formControlName="nationality" />
+    <input placeholder="Enter your Citizenship" formControlName="nationality" />
   </div>
 
   <div>
     <label>Gender:</label>
-    <select formControlName="gender">
+    <select placeholder="use dropdown" formControlName="gender">
       <option value="Male">Male</option>
       <option value="Female">Female</option>
-      <option value="Other">Other</option>
+      <option value="Other">Prefer not to say</option>
     </select>
   </div>
 
   <div>
     <label>Email:</label>
-    <input formControlName="email" />
+    <input placeholder="Enter your valid email" formControlName="email" />
+     <div *ngIf=  "customerForm.get('email')?.invalid && customerForm.get('email')?.touched">
+    <small class="error" *ngIf="customerForm.get('email')?.errors?.['required']">Email is required.</small>
+    <small class="error" *ngIf="customerForm.get('email')?.errors?.['email']">Invalid email format.</small>
+  </div>
+
   </div>
 
   <div>
     <label>Mobile No:</label>
-    <input formControlName="mobileNo" />
+    <input placeholder="should be 10 digits,exclude country code" formControlName="mobileNo" />
+    <div *ngIf="customerForm.get('mobileNo')?.invalid && customerForm.get('mobileNo')?.touched">
+    <small class="error">MobileNo is required.</small>
+   <small class="error" *ngIf="customerForm.get('mobileNo')?.errors?.['pattern']">
+      Mobile number must be 10 digits and should not include country code.
+    </small>
+
+  </div>
   </div>
 
   <fieldset>
@@ -45,34 +64,51 @@
 
     <div>
       <label>Door No:</label>
-      <input formControlName="doorNo" />
+      <input placeholder="Enter Numbers only" formControlName="doorNo" />
     </div>
 
     <div>
       <label>Street:</label>
-      <input formControlName="street" />
+      <input placeholder="avoid special characters" formControlName="street" />
     </div>
 
     <div>
       <label>City:</label>
-      <input formControlName="city" />
+       <select formControlName="city">
+      <option value="" disabled>Select City</option>
+      <option *ngFor="let c of cities" [value]="c">{{ c }}</option>
+    </select>
     </div>
 
     <div>
       <label>State:</label>
-      <input formControlName="state" />
+     <select formControlName="state" (change)="onStateChange($any($event.target).value)">
+      <option value="" disabled>Select State</option>
+      <option *ngFor="let s of states" [value]="s">{{ s }}</option>
+    </select>
+
     </div>
 
     <div>
       <label>Country:</label>
-      <input formControlName="country" />
+    <select formControlName="country" (change)="onCountryChange($any($event.target).value)">
+    <option value="" disabled>Select Country</option>
+    <option *ngFor="let c of this.getCountryList()" [value]="c">{{ c }}</option>
+    </select>
     </div>
   </fieldset>
 
   <div>
     <label>Message:</label>
-    <textarea formControlName="message"></textarea>
+    <textarea placeholder="10-100 words" formControlName="message"></textarea>
+    <div *ngIf="customerForm.get('message')?.invalid && customerForm.get('message')?.touched">
+    <small class="error">At Least 10-100 words required.</small>
+  </div>
   </div>
 
   <button type="submit">Submit Feedback</button>
+  <p *ngIf="sucess" [ngStyle]="{ 'color': sucess.includes('SuccessFully') ? 'green' : 'red' }">
+  {{ sucess }}
+</p>
 </form>
+
